@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Ticker Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            padding: 20px;
+            margin: 0;
+            overflow: hidden;
+        }
+        .ticker {
+            display: flex;
+            flex-wrap: wrap;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        .ticker-item {
+            width: 200px;
+            padding: 5px;
+        }
+        .status {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="ticker-container" class="ticker"></div>
+    <div id="status" class="status"></div>
+    <script src="script.js"></script>
+</body>
+</html>
