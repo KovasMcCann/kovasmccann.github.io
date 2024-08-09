@@ -8,7 +8,7 @@
     'SBUX', 'SHOP', 'SQ', 'T', 'TSLA', 'U', 'UNH', 'V', 'VZ', 'WMT', 'XOM', 'ZM'
 ]; */
 
-const tickers = [ 'AAPL', 'GOOGL', 'AMZN', 'MSFT', 'TSLA', 'FB', 'NVDA', 'PYPL', 'NFLX', 'INTC', 'CSCO', 'CMCSA', 'PEP', 'ADBE', 'AVGO', 'TMUS', 'COST', 'QCOM', 'AMGN', 'TXN', 'SBUX', 'INTU', 'AMD', 'ISRG', 'GILD', 'MU', 'ADP', 'BKNG', 'FISV', 'MDLZ', 'REGN', 'ATVI' ];
+const tickers = [ 'AAPL', 'GOOGL', 'AMZN', 'MSFT', 'TSLA', 'FB', 'NVDA', 'PYPL', 'NFLX', 'INTC', 'CSCO', 'CMCSA', 'PEP', 'ADBE', 'AVGO', 'TMUS', 'COST', 'QCOM', 'AMGN', 'TXN', 'SBUX', 'INTU', 'AMD', 'ISRG', 'GILD', 'MU', 'ADP', 'BKNG' ];
 
 let count = 0;
 const startTime = Date.now();
