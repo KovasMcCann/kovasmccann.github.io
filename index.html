@@ -1,5 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #02000a;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.logo {
+    white-space: pre;
+    font-family: monospace;
+    font-size: 16px;
+    text-align: center;
+    /*color: #f5f5dc;*/
+    color: #ffffff;
+}
+
+.projects {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #18181885;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    color: #00e501;
+}
+.projects h2 {
+    margin-top: 0;
+}
+.projects ul {
+    list-style-type: none;
+    padding: 0;
+}
+.projects li {
+    margin-bottom: 10px;
+}
+footer {
+    background-color: #02000a;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    /*color: #f5f5dc;*/
+    color: #ffffff;
+}
+
+.contact {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 1em;
+}
+
+.message-group {
+    margin-top: 1em;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 0.5em;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 0.7em;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.about, .projects, .contact {
+    background-color: #18181885;
+    margin-top: 20px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    color: #ffffff;
+    text-align: left;
+}
+.projects h2, .about h2, .contact h2 {
+    color: #ffffff;
+    margin-top: 0;
+}
+.projects ul, .contact form {
+    list-style-type: none;
+    padding: 0;
+}
+.projects li {
+    margin-bottom: 10px;
+}
+.contact input, .contact textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #333;
+    color: #fff;
+}
+.contact button {
+    padding: 10px;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.contact button:hover {
+    background-color: #0a0a0a;
+}
+footer {
+    background-color: #02000a;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    color: #ffffff;
+}
+
+
+
+</style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
