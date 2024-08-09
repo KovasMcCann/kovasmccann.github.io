@@ -1,6 +1,18 @@
 // Based off of https://github.com/martinshkreli/stocks
-const tickers = [ 'AAPL', 'GOOGL', 'AMZN', 'MSFT', 'TSLA', 'FB', 'NVDA', 'PYPL', 'NFLX', 'INTC', 'CSCO', 'CMCSA', 'PEP', 'ADBE', 'AVGO', 'TMUS', 'COST', 'QCOM', 'AMGN', 'TXN', 'SBUX', 'INTU', 'AMD', 'ISRG', 'GILD', 'MU', 'ADP', 'BKNG' ];
-
+//const tickers = [ 'AAPL', 'GOOGL', 'AMZN', 'MSFT', 'TSLA', 'FB', 'NVDA', 'PYPL', 'NFLX', 'INTC', 'CSCO', 'CMCSA', 'PEP', 'ADBE', 'AVGO', 'TMUS', 'COST', 'QCOM', 'AMGN', 'TXN', 'SBUX', 'INTU', 'AMD', 'ISRG', 'GILD', 'MU', 'ADP', 'BKNG' ];
+const tickers = [
+    'AAPL', 'MSFT', 'AMZN', 'GOOGL', 'META', 'TSLA', 'NVDA', 'BRK.B', 'JPM', 'V',
+    'MA', 'DIS', 'HD', 'PG', 'UNH', 'MRK', 'T', 'XOM', 'CVX', 'IBM',
+    'CSCO', 'ORCL', 'INTU', 'WMT', 'PFE', 'KO', 'NKE', 'MCD', 'LLY', 'BMY',
+    'BA', 'CAT', 'UPS', 'TMO', 'MDT', 'AMGN', 'QCOM', 'GILD', 'LMT', 'ADBE',
+    'NFLX', 'CSX', 'SBUX', 'MS', 'DHR', 'TXN', 'AMT', 'MMM', 'TROW',
+    'CB', 'WBA', 'SPG', 'SO', 'HCA', 'COP', 'WFC', 'D', 'PEP', 'EOG',
+    'IFF', 'VZ', 'F', 'C', 'USB', 'VRTX', 'LRCX', 'HOG', 'A', 'ADP',
+    'ZTS', 'RBLX', 'ETN', 'KMB', 'NSC', 'ALL', 'UAL', 'CCI', 'CBRE', 'BABA',
+    'ROG', 'TSN', 'MRO', 'KHC', 'EXC', 'ECL', 'PGR', 'NOC', 'DFS', 'PH',
+    'BBY', 'LYB', 'MRVL', 'ALXN', 'MRNA'
+];
+  
 let count = 0;
 const startTime = Date.now();
 const randchars = ['*', '%', '$', '&', '@', '!', '^', '~', '+', '?', '/', '|', '<', '>'];
