@@ -1,150 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-<style>
-body {
-    font-family: Arial, sans-serif;
-    background-color: #02000a;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-.logo {
-    white-space: pre;
-    font-family: monospace;
-    font-size: 16px;
-    text-align: center;
-    /*color: #f5f5dc;*/
-    color: #ffffff;
-}
-
-.projects {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #18181885;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    color: #00e501;
-}
-.projects h2 {
-    margin-top: 0;
-}
-.projects ul {
-    list-style-type: none;
-    padding: 0;
-}
-.projects li {
-    margin-bottom: 10px;
-}
-footer {
-    background-color: #02000a;
-    padding: 20px;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    /*color: #f5f5dc;*/
-    color: #ffffff;
-}
-
-.contact {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.contact-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group {
-    margin-bottom: 1em;
-}
-
-.message-group {
-    margin-top: 1em;
-}
-
-input, textarea {
-    width: 100%;
-    padding: 0.5em;
-    box-sizing: border-box;
-}
-
-button {
-    padding: 0.7em;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-.about, .projects, .contact {
-    background-color: #18181885;
-    margin-top: 20px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    color: #ffffff;
-    text-align: left;
-}
-.projects h2, .about h2, .contact h2 {
-    color: #ffffff;
-    margin-top: 0;
-}
-.projects ul, .contact form {
-    list-style-type: none;
-    padding: 0;
-}
-.projects li {
-    margin-bottom: 10px;
-}
-.contact input, .contact textarea {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background: #333;
-    color: #fff;
-}
-.contact button {
-    padding: 10px;
-    background-color: #000000;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-.contact button:hover {
-    background-color: #0a0a0a;
-}
-footer {
-    background-color: #02000a;
-    padding: 20px;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    color: #ffffff;
-}
-
-
-
-</style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kovas McCann</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #02000a;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .logo {
+            white-space: pre;
+            font-family: monospace;
+            font-size: 16px;
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        .projects, .about, .contact {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #18181885;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: #ffffff;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .projects h2, .about h2, .contact h2 {
+            color: #ffffff;
+            margin-top: 0;
+        }
+        .projects ul, .contact form {
+            list-style-type: none;
+            padding: 0;
+        }
+        .projects li {
+            margin-bottom: 10px;
+        }
+        .contact input, .contact textarea {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: #333;
+            color: #fff;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .contact button {
+            padding: 10px;
+            background-color: #000000;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .contact button:hover {
+            background-color: #0a0a0a;
+        }
+        footer {
+            background-color: #02000a;
+            padding: 20px;
+            text-align: center;
+            color: #ffffff;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 14px;
+            }
+            .projects, .about, .contact {
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -159,53 +108,30 @@ footer {
 888    Y88b "Y88P"   Y88P  "Y888888 88888P'888       888 "Y8888P "Y8888P" "Y888888888  888888  888 
         </div>
 
-<!--
-<noscript>
-    <p style="text-align: center; margin-bottom: 0px;"> 
-        JS disabled! keep it up! 
-    </p>
-</noscript>
--->
+        <center>
+            <img src="Lock.png" alt="Lock">
+        </center>
 
-<center>
-<img src="Lock.png">
-</center>
+        <hr>
 
-<hr>
-
-<div class="contact">
-    <h2>Contact</h2>
-    <form action="mailto:kovasmccann@firemail.cc" method="post" enctype="text/plain" class="contact-form">
-        <div class="form-group">
-            <input type="email" name="email" placeholder="Your Email" required>
+        <div class="contact">
+            <h2>Contact</h2>
+            <form action="mailto:kovasmccann@firemail.cc" method="post" enctype="text/plain" class="contact-form">
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group message-group">
+                    <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
         </div>
-        <div class="form-group message-group">
-            <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
-        </div>
-        <button type="submit">Send Message</button>
-    </form>
-</div>
+    </div>
 
-<!--
-<center>
-        <div class="projects">
-            <h2>Current Projects</h2>
-            <ul>
-                <li>FireFetch</li>
-                <li>StockSearch</li>
-            </ul>
-        </div>
-</center>
-
--->
-
-</div>
+    <footer>
+        <hr>
+        Kovas McCann <script>document.write(new Date().getFullYear())</script><br>
+        XMR Address: 8BtCmvu4XDJUQcLRHe7vTEgXTL8oWj7kDaPq6Eq3DmCbDA1LS8TFMP5KFctzk6t1XoinFjV7Fxg2ZLxwbhd6taqZBwBt9r7
+    </footer>
 </body>
-<footer>
-    <hr>
-    Kovas McCann <script>document.write(new Date().getFullYear())</script><br>
-    XMR Address: 8BtCmvu4XDJUQcLRHe7vTEgXTL8oWj7kDaPq6Eq3DmCbDA1LS8TFMP5KFctzk6t1XoinFjV7Fxg2ZLxwbhd6taqZBwBt9r7
-</footer>
-</body>
-
 </html>
