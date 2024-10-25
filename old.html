@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stock Ticker Display</title>
+    <title>Responsive Stock Ticker Display</title>
     <style>
+        /* Base Styles */
         body {
             font-family: Arial, sans-serif;
             background-color: black;
@@ -13,28 +14,86 @@
             margin: 0;
             overflow: hidden;
         }
-        .ticker {
-            display: flex;
-            flex-wrap: wrap;
-            font-size: 16px;
-            line-height: 1.5;
-        }
-        .ticker-item {
-            width: 200px;
-            padding: 5px;
-        }
-        .status {
-            margin-top: 20px;
+
+        /* Ticker Wrapper */
+        .ticker-wrapper {
+            overflow-x: auto; /* Enables horizontal scrolling */
+            white-space: nowrap;
+            background-color: black;
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
         }
 
+        /* Ticker Container with Flexbox */
+        .ticker-container {
+            display: flex;
+            gap: 10px; /* Space between ticker items */
+        }
+
+        /* Ticker Item Styles */
+        .ticker-item {
+            font-family: 'Courier New', Courier, monospace;
+            color: #00FF00; /* Neon green */
+            background-color: #000000;
+            padding: 5px 10px;
+            border-radius: 3px;
+            border: 1px solid #00FF00;
+            min-width: 80px;
+            text-align: center;
+            transition: background-color 0.5s ease;
+        }
+
+        /* Flash Animations */
+        .flash-up {
+            animation: flashUp 0.5s ease;
+        }
+        .flash-down {
+            animation: flashDown 0.5s ease;
+        }
+
+        /* Keyframes for Flash Animation */
+        @keyframes flashUp {
+            from { background-color: #00ff00; }
+            to { background-color: #000000; }
+        }
+        @keyframes flashDown {
+            from { background-color: #ff0000; }
+            to { background-color: #000000; }
+        }
+
+        /* Responsive Font Size */
+        @media (max-width: 768px) {
+            .ticker-item {
+                font-size: 12px;
+                padding: 4px 8px;
+            }
+        }
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .ticker-item {
+                font-size: 14px;
+                padding: 5px 10px;
+            }
+        }
+        @media (min-width: 1025px) {
+            .ticker-item {
+                font-size: 16px;
+                padding: 6px 12px;
+            }
+        }
     </style>
 </head>
-
 <body>
     <center>
-        <div id="ticker-container" class="ticker"></div>
+        <!-- Ticker Wrapper with Overflow -->
+        <div class="ticker-wrapper">
+            <div id="ticker-container" class="ticker-container"></div>
+        </div>
+
+        <!-- Status Display for Updates -->
         <div id="status" class="status"></div>
-        <script src="old.js"></script>
+        <script src="script.js"></script>
     </center>
 </body>
 </html>
