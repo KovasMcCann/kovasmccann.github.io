@@ -10,36 +10,36 @@
             font-family: Arial, sans-serif;
             background-color: black;
             color: white;
-            padding: 20px;
+            padding: 0;
             margin: 0;
-            overflow: hidden;
-        }
-
-        /* Ticker Wrapper */
-        .ticker-wrapper {
-            overflow-x: auto; /* Enables horizontal scrolling */
-            white-space: nowrap;
-            background-color: black;
-            padding: 10px;
-            border: 1px solid #333;
-            border-radius: 5px;
-            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
-        }
-
-        /* Ticker Container with Flexbox */
-        .ticker-container {
             display: flex;
-            gap: 10px; /* Space between ticker items */
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Ticker Wrapper for Overflow Scrolling */
+        .ticker-wrapper {
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 10px;
+            background-color: black;
+            border: 1px solid #333;
+            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+            max-width: 100%;
+            width: 100%;
         }
 
         /* Ticker Item Styles */
         .ticker-item {
             font-family: 'Courier New', Courier, monospace;
-            color: #00FF00; /* Neon green */
+            color: #00FF00;
             background-color: #000000;
             padding: 5px 10px;
             border-radius: 3px;
             border: 1px solid #00FF00;
+            margin-right: 10px;
             min-width: 80px;
             text-align: center;
             transition: background-color 0.5s ease;
@@ -47,53 +47,83 @@
 
         /* Flash Animations */
         .flash-up {
-            animation: flashUp 0.5s ease;
+            animation: flashUp 0.5s;
         }
         .flash-down {
-            animation: flashDown 0.5s ease;
+            animation: flashDown 0.5s;
         }
 
         /* Keyframes for Flash Animation */
         @keyframes flashUp {
-            from { background-color: #00ff00; }
-            to { background-color: #000000; }
+            0% { background-color: #00ff00; }
+            100% { background-color: #000000; }
         }
         @keyframes flashDown {
-            from { background-color: #ff0000; }
-            to { background-color: #000000; }
-        }
-
-        /* Responsive Font Size */
-        @media (max-width: 768px) {
-            .ticker-item {
-                font-size: 12px;
-                padding: 4px 8px;
-            }
-        }
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .ticker-item {
-                font-size: 14px;
-                padding: 5px 10px;
-            }
-        }
-        @media (min-width: 1025px) {
-            .ticker-item {
-                font-size: 16px;
-                padding: 6px 12px;
-            }
+            0% { background-color: #ff0000; }
+            100% { background-color: #000000; }
         }
     </style>
 </head>
 <body>
-    <center>
-        <!-- Ticker Wrapper with Overflow -->
-        <div class="ticker-wrapper">
-            <div id="ticker-container" class="ticker-container"></div>
-        </div>
+    <!-- Centered Ticker Wrapper for Overflow -->
+    <div class="ticker-wrapper">
+        <div id="ticker-container" class="ticker-container"></div>
+    </div>
+    <script>
+        // Sample tickers array
+        const tickers = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'TSLA'];
 
-        <!-- Status Display for Updates -->
-        <div id="status" class="status"></div>
-        <script src="script.js"></script>
-    </center>
+        // Cache to store previous prices
+        const previousPrices = {};
+
+        // Create ticker items in the container
+        const tickerContainer = document.getElementById('ticker-container');
+        tickers.forEach(ticker => {
+            const item = document.createElement('div');
+            item.className = 'ticker-item';
+            item.dataset.ticker = ticker;
+            item.textContent = `${ticker} - Loading...`;
+            tickerContainer.appendChild(item);
+        });
+
+        // Update prices and flash on change
+        async function updatePrices() {
+            for (const ticker of tickers) {
+                try {
+                    // Mocked fetch, replace URL with actual endpoint
+                    const newPrice = Math.random() * 1000;
+                    
+                    // Find ticker item
+                    const item = document.querySelector(`.ticker-item[data-ticker='${ticker}']`);
+
+                    // Compare prices and apply flash class
+                    const oldPrice = previousPrices[ticker];
+                    previousPrices[ticker] = newPrice;
+
+                    if (oldPrice !== undefined) {
+                        item.classList.remove('flash-up', 'flash-down'); // Reset flash classes
+                        
+                        // Add appropriate flash class
+                        if (newPrice > oldPrice) {
+                            item.classList.add('flash-up');
+                        } else if (newPrice < oldPrice) {
+                            item.classList.add('flash-down');
+                        }
+
+                        // Remove flash class after animation ends
+                        setTimeout(() => item.classList.remove('flash-up', 'flash-down'), 500);
+                    }
+
+                    // Update the item content
+                    item.textContent = `${ticker} - ${newPrice.toFixed(2)}`;
+                } catch (error) {
+                    console.error('Error updating prices:', error);
+                }
+            }
+        }
+
+        // Initialize and start updating prices
+        setInterval(updatePrices, 2000); // Update every 2 seconds
+    </script>
 </body>
 </html>
