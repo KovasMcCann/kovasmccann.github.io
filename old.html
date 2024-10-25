@@ -18,17 +18,14 @@
             height: 100vh;
         }
 
-        /* Ticker Wrapper for Overflow Scrolling */
-        .ticker-wrapper {
-            display: flex;
-            overflow-x: auto;
-            white-space: nowrap;
+        /* Ticker Grid Layout */
+        .ticker-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
             padding: 10px;
-            background-color: black;
-            border: 1px solid #333;
-            box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
-            max-width: 100%;
             width: 100%;
+            box-sizing: border-box;
         }
 
         /* Ticker Item Styles */
@@ -36,60 +33,37 @@
             font-family: 'Courier New', Courier, monospace;
             color: #00FF00;
             background-color: #000000;
-            padding: 5px 10px;
+            padding: 10px;
             border-radius: 3px;
             border: 1px solid #00FF00;
-            margin-right: 10px;
-            min-width: 80px;
             text-align: center;
             transition: background-color 0.5s ease;
         }
 
         /* Flash Animations */
-        .flash-up {
-            animation: flashUp 0.5s;
-        }
-        .flash-down {
-            animation: flashDown 0.5s;
-        }
+        .flash-up { animation: flashUp 0.5s; }
+        .flash-down { animation: flashDown 0.5s; }
 
         /* Keyframes for Flash Animation */
-        @keyframes flashUp {
-            0% { background-color: #00ff00; }
-            100% { background-color: #000000; }
-        }
-        @keyframes flashDown {
-            0% { background-color: #ff0000; }
-            100% { background-color: #000000; }
-        }
+        @keyframes flashUp { 0% { background-color: #00ff00; } 100% { background-color: #000000; } }
+        @keyframes flashDown { 0% { background-color: #ff0000; } 100% { background-color: #000000; } }
     </style>
 </head>
 <body>
-    <!-- Centered Ticker Wrapper for Overflow -->
-    <div class="ticker-wrapper">
-        <div id="ticker-container" class="ticker-container"></div>
-    </div>
+    <!-- Ticker Container with CSS Grid -->
+    <div id="ticker-container" class="ticker-container"></div>
+
     <script>
         // Sample tickers array
-       // const tickers = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'TSLA'];
-
         const tickers = [
-    'AAPL', 'MSFT', 'AMZN', 'GOOGL', 'META', 'TSLA', 'NVDA', 'BRK.B', 'JPM', 'V',
-    'MA', 'DIS', 'HD', 'PG', 'UNH', 'MRK', 'T', 'XOM', 'CVX', 'IBM',
-    'CSCO', 'ORCL', 'INTU', 'WMT', 'PFE', 'KO', 'NKE', 'MCD', 'LLY', 'BMY',
-    'BA', 'CAT', 'UPS', 'TMO', 'MDT', 'AMGN', 'QCOM', 'GILD', 'LMT', 'ADBE',
-    'NFLX', 'CSX', 'SBUX', 'MS', 'DHR', 'TXN', 'AMT', 'MMM', 'TROW',
-    'CB', 'WBA', 'SPG', 'SO', 'HCA', 'COP', 'WFC', 'D', 'PEP', 'EOG',
-    'IFF', 'VZ', 'F', 'C', 'USB', 'VRTX', 'LRCX', 'HOG', 'A', 'ADP',
-    'ZTS', 'RBLX', 'ETN', 'KMB', 'NSC', 'ALL', 'UAL', 'CCI', 'CBRE', 'BABA',
-    'ROG', 'TSN', 'MRO', 'KHC', 'EXC', 'ECL', 'PGR', 'NOC', 'DFS', 'PH',
-    'BBY', 'LYB', 'MRVL', 'ALXN', 'MRNA'
-];
+            'AAPL', 'MSFT', 'AMZN', 'GOOGL', 'META', 'TSLA', 'NVDA', 'BRK.B', 'JPM', 'V',
+            'MA', 'DIS', 'HD', 'PG', 'UNH', 'MRK', 'T', 'XOM', 'CVX', 'IBM'
+        ];
         
-        // Cache to store previous prices
+        // Store previous prices to track changes
         const previousPrices = {};
 
-        // Create ticker items in the container
+        // Populate ticker items in the container
         const tickerContainer = document.getElementById('ticker-container');
         tickers.forEach(ticker => {
             const item = document.createElement('div');
@@ -103,50 +77,35 @@
         async function updatePrices() {
             for (const ticker of tickers) {
                 try {
-                    // Mocked fetch, replace URL with actual endpoint
-                    const response = await fetch(`https://generic709.herokuapp.com/stockc/${singleticker}`);
-                    const quote = await response.json();
-                    if (!quote || !quote.price) continue;
+                    // Mock price data
+                    const newPrice = (Math.random() * 1000).toFixed(2); // Simulate price with random data
 
-                    const item = Array.from(document.querySelectorAll('.ticker-item'))
-                    .find(el => el.dataset.ticker === singleticker);
-            
-                    if (item) {
-                        const newPrice = quote.price.toFixed(2);
-                    }
-                    
-                    //const newPrice = Math.random() * 1000;
-                    
-                    // Find ticker item
+                    // Find the ticker item in DOM
                     const item = document.querySelector(`.ticker-item[data-ticker='${ticker}']`);
 
-                        // Compare prices and apply flash class
+                    // Get the previous price to compare for flash animation
                     const oldPrice = previousPrices[ticker];
                     previousPrices[ticker] = newPrice;
 
-                       if (oldPrice !== undefined) {
-                        item.classList.remove('flash-up', 'flash-down'); // Reset flash classes
+                    // Add flash effect based on price movement
+                    if (oldPrice !== undefined) {
+                        item.classList.remove('flash-up', 'flash-down');
+                        if (newPrice > oldPrice) item.classList.add('flash-up');
+                        else if (newPrice < oldPrice) item.classList.add('flash-down');
                         
-                        // Add appropriate flash class
-                        if (newPrice > oldPrice) {
-                            item.classList.add('flash-up');
-                        } else if (newPrice < oldPrice) {
-                            item.classList.add('flash-down');
-                        }
-
-                        // Remove flash class after animation ends
+                        // Remove flash effect after animation
                         setTimeout(() => item.classList.remove('flash-up', 'flash-down'), 500);
                     }
 
-                    // Update the item content
-                    item.textContent = `${ticker} - ${newPrice.toFixed(2)}`;
+                    // Update item content with new price
+                    item.textContent = `${ticker} - $${newPrice}`;
                 } catch (error) {
                     console.error('Error updating prices:', error);
                 }
             }
         }
 
-        // Initialize and start updating prices
+        // Initialize and update prices periodically
         setInterval(updatePrices, 2000); // Update every 2 seconds
     </script>
 </body>
