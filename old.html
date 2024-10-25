@@ -54,14 +54,27 @@
     <div id="ticker-container" class="ticker-container"></div>
 
     <script>
+        /*
         const tickers = [
             'AAPL', 'MSFT', 'AMZN', 'GOOGL', 'META', 'TSLA', 'NVDA', 'BRK.B', 'JPM', 'V',
             'MA', 'DIS', 'HD', 'PG', 'UNH', 'MRK', 'T', 'XOM', 'CVX', 'IBM'
+        ]; */
+        const tickers = [
+            'AAPL', 'MSFT', 'AMZN', 'GOOGL', 'META', 'TSLA', 'NVDA', 'BRK.B', 'JPM', 'V',
+            'MA', 'DIS', 'HD', 'PG', 'UNH', 'MRK', 'T', 'XOM', 'CVX', 'IBM',
+            'CSCO', 'ORCL', 'INTU', 'WMT', 'PFE', 'KO', 'NKE', 'MCD', 'LLY', 'BMY',
+            'BA', 'CAT', 'UPS', 'TMO', 'MDT', 'AMGN', 'QCOM', 'GILD', 'LMT', 'ADBE',
+            'NFLX', 'CSX', 'SBUX', 'MS', 'DHR', 'TXN', 'AMT', 'MMM', 'TROW',
+            'CB', 'WBA', 'SPG', 'SO', 'HCA', 'COP', 'WFC', 'D', 'PEP', 'EOG',
+            'IFF', 'VZ', 'F', 'C', 'USB', 'VRTX', 'LRCX', 'HOG', 'A', 'ADP',
+            'ZTS', 'RBLX', 'ETN', 'KMB', 'NSC', 'ALL', 'UAL', 'CCI', 'CBRE', 'BABA',
+            'ROG', 'TSN', 'MRO', 'KHC', 'EXC', 'ECL', 'PGR', 'NOC', 'DFS', 'PH',
+            'BBY', 'LYB', 'MRVL', 'ALXN', 'MRNA'
         ];
         
         // Store previous prices to track changes
         const previousPrices = {};
-        const randchars = ['*', '%', '$', '&', '@', '!', '^', '~', '+', '?', '/', '|', '<', '>'];
+        //const randchars = ['*', '%', '$', '&', '@', '!', '^', '~', '+', '?', '/', '|', '<', '>'];
 
         // Populate ticker items in the container
         const tickerContainer = document.getElementById('ticker-container');
@@ -105,8 +118,10 @@
                     }
 
                     // Update the ticker text with a random character
-                    const char = randchars[Math.floor(Math.random() * randchars.length)];
-                    item.innerHTML = `<span style="color: #FF00FF;">${singleticker}</span> - ${newPrice}${char}`;
+                    //const char = randchars[Math.floor(Math.random() * randchars.length)];
+                    //item.innerHTML = `<span style="color: #FF00FF;">${singleticker}</span> - ${newPrice}${char}`;
+                    item.innerHTML = `<span style="color: #FF00FF;">${singleticker}</span> - ${newPrice}`;
+                    
                 } catch (error) {
                     console.error('Error fetching data:', error);
                 }
