@@ -54,7 +54,6 @@
     <div id="ticker-container" class="ticker-container"></div>
 
     <script>
-        // Sample tickers array
         const tickers = [
             'AAPL', 'MSFT', 'AMZN', 'GOOGL', 'META', 'TSLA', 'NVDA', 'BRK.B', 'JPM', 'V',
             'MA', 'DIS', 'HD', 'PG', 'UNH', 'MRK', 'T', 'XOM', 'CVX', 'IBM'
@@ -62,6 +61,7 @@
         
         // Store previous prices to track changes
         const previousPrices = {};
+        const randchars = ['*', '%', '$', '&', '@', '!', '^', '~', '+', '?', '/', '|', '<', '>'];
 
         // Populate ticker items in the container
         const tickerContainer = document.getElementById('ticker-container');
@@ -73,40 +73,48 @@
             tickerContainer.appendChild(item);
         });
 
-        // Update prices and flash on change
-        async function updatePrices() {
-            for (const ticker of tickers) {
+        // Fetch and update prices with flash effect
+        async function grab() {
+            for (const singleticker of tickers) {
                 try {
-                    // Mock price data
-                    const newPrice = (Math.random() * 1000).toFixed(2); // Simulate price with random data
+                    const response = await fetch(`https://generic709.herokuapp.com/stockc/${singleticker}`);
+                    const quote = await response.json();
+                    if (!quote || !quote.price) continue;
 
-                    // Find the ticker item in DOM
-                    const item = document.querySelector(`.ticker-item[data-ticker='${ticker}']`);
+                    // Get the current price
+                    const newPrice = parseFloat(quote.price).toFixed(2);
 
-                    // Get the previous price to compare for flash animation
-                    const oldPrice = previousPrices[ticker];
-                    previousPrices[ticker] = newPrice;
+                    // Find the ticker item element
+                    const item = document.querySelector(`.ticker-item[data-ticker='${singleticker}']`);
+                    
+                    // Compare to previous price and apply flash if needed
+                    const oldPrice = previousPrices[singleticker];
+                    previousPrices[singleticker] = newPrice;
 
-                    // Add flash effect based on price movement
+                    // Add flash class if price has changed
                     if (oldPrice !== undefined) {
-                        item.classList.remove('flash-up', 'flash-down');
-                        if (newPrice > oldPrice) item.classList.add('flash-up');
-                        else if (newPrice < oldPrice) item.classList.add('flash-down');
-                        
-                        // Remove flash effect after animation
+                        item.classList.remove('flash-up', 'flash-down'); // Reset flash classes
+                        if (newPrice > oldPrice) {
+                            item.classList.add('flash-up');
+                        } else if (newPrice < oldPrice) {
+                            item.classList.add('flash-down');
+                        }
+
+                        // Remove flash class after animation
                         setTimeout(() => item.classList.remove('flash-up', 'flash-down'), 500);
                     }
 
-                    // Update item content with new price
-                    item.textContent = `${ticker} - $${newPrice}`;
+                    // Update the ticker text with a random character
+                    const char = randchars[Math.floor(Math.random() * randchars.length)];
+                    item.innerHTML = `<span style="color: #FF00FF;">${singleticker}</span> - ${newPrice}${char}`;
                 } catch (error) {
-                    console.error('Error updating prices:', error);
+                    console.error('Error fetching data:', error);
                 }
             }
         }
 
         // Initialize and update prices periodically
-        setInterval(updatePrices, 2000); // Update every 2 seconds
+        setInterval(grab, 2000); // Update every 2 seconds
     </script>
 </body>
 </html>
