@@ -75,7 +75,7 @@
         async function grab() {
             for (const singleticker of tickers) {
                 try {
-                    const response = await fetch(`https://tradeogre.com/api/v1/tickers/${singleticker}`);
+                    const response = await fetch(`https://tradeogre.com/api/v1/ticker/${singleticker}`);
                     const quote = await response.json();
                     if (!quote || !quote.result) continue;
 
