@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XMR-USDT Order Book - Hacker Theme</title>
+    <title>XMR-USDT Order Book - Stock Chart & Forex Strategies</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
     <style>
-        /* Base styles */
         body {
             font-family: 'Orbitron', sans-serif;
             background-color: #1e1e1e;
@@ -14,58 +13,15 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            position: relative;
         }
+
         h1, h3 {
             text-align: center;
             color: #00ff00;
         }
+
         .container {
             padding: 20px;
-        }
-        
-        /* Movable Terminal */
-        #terminal {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 300px;
-            height: 200px;
-            background-color: #222;
-            color: #00ff00;
-            border: 1px solid #444;
-            border-radius: 10px;
-            padding: 10px;
-            font-size: 12px;
-            box-shadow: 0 0 15px rgba(0, 255, 0, 0.6);
-            z-index: 999;
-            cursor: move;
-        }
-
-        #terminal-header {
-            background-color: #333;
-            padding: 5px;
-            cursor: grab;
-        }
-
-        #terminal-header:hover {
-            background-color: #444;
-        }
-
-        /* Ticker */
-        .ticker {
-            position: fixed;
-            bottom: 80px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 14px;
-            color: #ffcc00;
-            animation: flash 1.5s infinite alternate;
-        }
-
-        @keyframes flash {
-            0% { color: #ffcc00; }
-            100% { color: #ff3300; }
         }
 
         /* Tables */
@@ -76,6 +32,9 @@
             background-color: #222;
             color: #00ff00;
             border-radius: 10px;
+            overflow-x: auto;
+            display: block;
+            max-height: 400px;
         }
 
         th, td {
@@ -101,9 +60,8 @@
 
         /* Metrics Section */
         .metrics {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+            display: flex;
+            justify-content: space-around;
             margin: 20px 0;
         }
 
@@ -113,6 +71,7 @@
             border-radius: 10px;
             border: 1px solid #444;
             text-align: center;
+            width: 30%;
         }
 
         .metric-box span {
@@ -139,12 +98,28 @@
             color: #888;
         }
 
+        /* Strategy Section */
+        .strategy-box {
+            background-color: #222;
+            color: #00ff00;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .strategy-box h3 {
+            color: #ffcc00;
+        }
+
+        .strategy-box .strategy {
+            margin: 10px 0;
+            font-size: 16px;
+        }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <!-- Main Content -->
     <div class="container">
         <h1>XMR-USDT Order Book</h1>
 
@@ -157,14 +132,6 @@
             <div class="metric-box">
                 <span id="lowestSellPrice">Loading...</span>
                 <div class="label">Lowest Sell Price</div>
-            </div>
-            <div class="metric-box">
-                <span id="totalBuyVolume">Loading...</span>
-                <div class="label">Total Buy Volume</div>
-            </div>
-            <div class="metric-box">
-                <span id="totalSellVolume">Loading...</span>
-                <div class="label">Total Sell Volume</div>
             </div>
         </div>
 
@@ -195,23 +162,17 @@
         </table>
 
         <!-- Order Book Graph -->
-        <h3>Order Book Graph</h3>
+        <h3>Order Book Chart</h3>
         <canvas id="orderBookChart" height="400"></canvas>
 
         <div class="refresh-text">Refreshing every 10 seconds...</div>
-    </div>
 
-    <!-- Movable Terminal -->
-    <div id="terminal">
-        <div id="terminal-header">Terminal</div>
-        <div id="terminal-body">
-            <p id="terminal-text">Waiting for data...</p>
+        <!-- Quantitative Forex Strategies -->
+        <div class="strategy-box">
+            <h3>Quantitative Forex Strategies</h3>
+            <div class="strategy" id="strategy1">Moving Average Strategy: Calculating 10-period and 50-period moving averages.</div>
+            <div class="strategy" id="strategy2">RSI Strategy: Calculating the Relative Strength Index (RSI) for overbought and oversold conditions.</div>
         </div>
-    </div>
-
-    <!-- Ticker -->
-    <div class="ticker" id="ticker">
-        Refreshing order book...
     </div>
 
     <script>
@@ -266,9 +227,6 @@
                     renderTables();
                     renderMetrics();
                     renderGraph();
-                    
-                    // Update the terminal text
-                    document.getElementById('terminal-text').textContent = `Data updated at: ${new Date().toLocaleTimeString()}`;
                 } else {
                     console.error("Error fetching order book data.");
                 }
@@ -308,93 +266,94 @@
             const highestBuyPrice = Math.max(...buyData.map(order => order.price));
             const lowestSellPrice = Math.min(...sellData.map(order => order.price));
 
-            const totalBuyVolume = buyData.reduce((total, order) => total + order.amount, 0);
-            const totalSellVolume = sellData.reduce((total, order) => total + order.amount, 0);
-
             document.getElementById('highestBuyPrice').textContent = highestBuyPrice.toFixed(8);
             document.getElementById('lowestSellPrice').textContent = lowestSellPrice.toFixed(8);
-            document.getElementById('totalBuyVolume').textContent = totalBuyVolume.toFixed(8);
-            document.getElementById('totalSellVolume').textContent = totalSellVolume.toFixed(8);
         }
 
-        // Render the graph
+        // Render the stock-style graph (candlestick chart)
         function renderGraph() {
             const ctx = document.getElementById('orderBookChart').getContext('2d');
 
-            const buyPrices = buyData.map(order => order.price);
-            const buyVolumes = buyData.map(order => order.amount);
-            const sellPrices = sellData.map(order => order.price);
-            const sellVolumes = sellData.map(order => order.amount);
+            const chartData = {
+                labels: Array.from({ length: buyData.length }, (_, i) => `Order ${i + 1}`),
+                datasets: [
+                    {
+                        label: 'Buy Orders',
+                        data: buyData.map(order => ({ x: `Order ${order.price}`, y: order.amount })),
+                        borderColor: '#00ff00',
+                        backgroundColor: 'rgba(0, 255, 0, 0.3)',
+                        fill: true,
+                    },
+                    {
+                        label: 'Sell Orders',
+                        data: sellData.map(order => ({ x: `Order ${order.price}`, y: order.amount })),
+                        borderColor: '#ff0000',
+                        backgroundColor: 'rgba(255, 0, 0, 0.3)',
+                        fill: true,
+                    },
+                ],
+            };
 
             new Chart(ctx, {
                 type: 'line',
-                data: {
-                    labels: Array.from({ length: buyPrices.length }, (_, i) => i + 1),
-                    datasets: [
-                        {
-                            label: 'Buy Orders',
-                            data: buyVolumes,
-                            borderColor: '#00ff00',
-                            backgroundColor: 'rgba(0, 255, 0, 0.3)',
-                            fill: true,
-                        },
-                        {
-                            label: 'Sell Orders',
-                            data: sellVolumes,
-                            borderColor: '#ff0000',
-                            backgroundColor: 'rgba(255, 0, 0, 0.3)',
-                            fill: true,
-                        },
-                    ],
-                },
+                data: chartData,
                 options: {
                     responsive: true,
                     scales: {
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Order Index',
-                            },
-                        },
-                        y: {
-                            title: {
-                                display: true,
-                                text: 'Amount (Volume)',
-                            },
-                        },
+                        x: { title: { display: true, text: 'Orders' } },
+                        y: { title: { display: true, text: 'Amount (Volume)' } },
                     },
                 },
             });
         }
 
-        // Make the terminal draggable
-        const terminal = document.getElementById('terminal');
-        const terminalHeader = document.getElementById('terminal-header');
-        let offsetX, offsetY, isDragging = false;
+        // Quantitative Forex Strategy Calculation
+        function calculateStrategies() {
+            // Example Moving Average Strategy
+            const prices = buyData.map(order => order.price);
+            const movingAverage10 = calculateMovingAverage(prices, 10);
+            const movingAverage50 = calculateMovingAverage(prices, 50);
 
-        terminalHeader.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            offsetX = e.clientX - terminal.offsetLeft;
-            offsetY = e.clientY - terminal.offsetTop;
-            terminalHeader.style.cursor = 'grabbing';
-        });
+            document.getElementById('strategy1').textContent = `Moving Average Strategy: MA(10) = ${movingAverage10.toFixed(4)}, MA(50) = ${movingAverage50.toFixed(4)}`;
 
-        document.addEventListener('mousemove', (e) => {
-            if (isDragging) {
-                terminal.style.left = `${e.clientX - offsetX}px`;
-                terminal.style.top = `${e.clientY - offsetY}px`;
+            // Example RSI Strategy
+            const rsi = calculateRSI(prices, 14);
+            document.getElementById('strategy2').textContent = `RSI Strategy: RSI = ${rsi.toFixed(2)}`;
+        }
+
+        // Moving Average calculation
+        function calculateMovingAverage(data, period) {
+            if (data.length < period) return null;
+            const sum = data.slice(-period).reduce((a, b) => a + b, 0);
+            return sum / period;
+        }
+
+        // RSI calculation
+        function calculateRSI(data, period) {
+            if (data.length < period) return null;
+
+            let gains = 0;
+            let losses = 0;
+
+            for (let i = 1; i < period; i++) {
+                const change = data[i] - data[i - 1];
+                if (change > 0) gains += change;
+                else losses -= change;
             }
-        });
 
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-            terminalHeader.style.cursor = 'grab';
-        });
+            const avgGain = gains / period;
+            const avgLoss = losses / period;
+            const rs = avgGain / avgLoss;
+
+            return 100 - (100 / (1 + rs));
+        }
 
         // Initial load and auto-refresh
         loadStoredData();
         fetchOrderBook();
         setInterval(fetchOrderBook, 10000);
+        calculateStrategies();
     </script>
 </body>
 </html>
+
