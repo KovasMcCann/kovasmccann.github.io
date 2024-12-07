@@ -77,10 +77,10 @@
                 try {
                     const response = await fetch(`https://tradeogre.com/api/v1/ticker/${singleticker}`);
                     const quote = await response.json();
-                    if (!quote || !quote.result) continue;
+                    if (!quote.success || !quote.price) continue;
 
-                    // Get the current price
-                    const newPrice = parseFloat(quote.result.price).toFixed(2);
+                    // Get the current price from the response
+                    const newPrice = parseFloat(quote.price).toFixed(2);
 
                     // Find the ticker item element
                     const item = document.querySelector(`.ticker-item[data-ticker='${singleticker}']`);
