@@ -16,15 +16,16 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            flex-direction: column;
         }
 
         /* Ticker Grid Layout */
         .ticker-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 10px;
-            padding: 10px;
-            width: 100%;
+            gap: 20px;
+            padding: 20px;
+            width: 80%;
             box-sizing: border-box;
         }
 
@@ -33,8 +34,8 @@
             font-family: 'Courier New', Courier, monospace;
             color: #00FF00;
             background-color: #000000;
-            padding: 10px;
-            border-radius: 3px;
+            padding: 20px;
+            border-radius: 5px;
             border: 1px solid #00FF00;
             text-align: center;
             transition: background-color 0.5s ease;
@@ -47,15 +48,33 @@
         /* Keyframes for Flash Animation */
         @keyframes flashUp { 0% { background-color: #00ff00; } 100% { background-color: #000000; } }
         @keyframes flashDown { 0% { background-color: #ff0000; } 100% { background-color: #000000; } }
+
+        /* Center the Ticker Item Text */
+        .ticker-item span {
+            display: block;
+            font-size: 20px;
+            color: #FF00FF;
+            margin-bottom: 10px;
+        }
+
+        /* Set container to be flexible */
+        .ticker-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
     </style>
 </head>
 <body>
-    <!-- Ticker Container with CSS Grid -->
+    <!-- Ticker Container -->
     <div id="ticker-container" class="ticker-container"></div>
 
     <script>
         const tickers = [
-            'BTC-USDT', 'ETH-USDT', 'XMR-USDT', 'LTC-USDT', 'DOGE-USDT', 'ZEC-USDT', 'ADA-USDT', 'XRP-USDT'
+            'BTC-USDT', 'ETH-USDT', 'XMR-USDT', 'LTC-USDT', 'DOGE-USDT', 'ZEC-USDT', 'ADA-USDT', 'XRP-USDT',
+            'BNB-USDT', 'SOL-USDT', 'DOT-USDT', 'TRX-USDT', 'MATIC-USDT', 'SHIB-USDT', 'LINK-USDT', 'AVAX-USDT',
+            'BCH-USDT', 'LUNA-USDT', 'FTM-USDT', 'GRT-USDT'
         ];
         
         // Store previous prices to track changes
@@ -106,12 +125,10 @@
                         setTimeout(() => item.classList.remove('flash-up', 'flash-down'), 500);
                     }
 
-                    // Update the ticker text with the mid price and bid/ask prices
+                    // Update the ticker text with the mid price
                     item.innerHTML = `
-                        <span style="color: #FF00FF;">${singleticker}</span><br>
-                        Mid: $${midPrice}<br>
-                        Bid: $${bidPrice.toFixed(2)}<br>
-                        Ask: $${askPrice.toFixed(2)}
+                        <span>${singleticker}</span>
+                        $${midPrice}
                     `;
                     
                 } catch (error) {
