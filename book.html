@@ -6,6 +6,7 @@
     <title>XMR-USDT Order Book - Hacker Theme</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
     <style>
+        /* Base styles */
         body {
             font-family: 'Orbitron', sans-serif;
             background-color: #1e1e1e;
@@ -13,6 +14,7 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
+            position: relative;
         }
         h1, h3 {
             text-align: center;
@@ -21,6 +23,52 @@
         .container {
             padding: 20px;
         }
+        
+        /* Movable Terminal */
+        #terminal {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            height: 200px;
+            background-color: #222;
+            color: #00ff00;
+            border: 1px solid #444;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 12px;
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.6);
+            z-index: 999;
+            cursor: move;
+        }
+
+        #terminal-header {
+            background-color: #333;
+            padding: 5px;
+            cursor: grab;
+        }
+
+        #terminal-header:hover {
+            background-color: #444;
+        }
+
+        /* Ticker */
+        .ticker {
+            position: fixed;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            color: #ffcc00;
+            animation: flash 1.5s infinite alternate;
+        }
+
+        @keyframes flash {
+            0% { color: #ffcc00; }
+            100% { color: #ff3300; }
+        }
+
+        /* Tables */
         table {
             width: 100%;
             margin: 20px 0;
@@ -29,29 +77,36 @@
             color: #00ff00;
             border-radius: 10px;
         }
+
         th, td {
             padding: 10px;
             text-align: right;
         }
+
         th {
             background-color: #333;
-            border-top: 1px solid #555;
         }
+
         td {
             border-top: 1px solid #444;
         }
+
         td.price {
             color: #ff0000;
         }
+
         td.amount {
             color: #00ff00;
         }
+
+        /* Metrics Section */
         .metrics {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin: 20px 0;
         }
+
         .metric-box {
             padding: 20px;
             background-color: #333;
@@ -59,30 +114,37 @@
             border: 1px solid #444;
             text-align: center;
         }
+
         .metric-box span {
             display: block;
             font-size: 24px;
         }
+
         .metric-box .label {
             font-size: 14px;
             color: #888;
         }
+
+        /* Graph */
         canvas {
             margin-top: 40px;
             border: 1px solid #555;
             border-radius: 10px;
         }
+
         .refresh-text {
             text-align: center;
             margin-top: 20px;
             font-size: 14px;
             color: #888;
         }
+
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
+    <!-- Main Content -->
     <div class="container">
         <h1>XMR-USDT Order Book</h1>
 
@@ -116,9 +178,7 @@
                     <th>Total</th>
                 </tr>
             </thead>
-            <tbody>
-                <!-- Data will be inserted here dynamically -->
-            </tbody>
+            <tbody></tbody>
         </table>
 
         <!-- Sell Orders Table -->
@@ -131,9 +191,7 @@
                     <th>Total</th>
                 </tr>
             </thead>
-            <tbody>
-                <!-- Data will be inserted here dynamically -->
-            </tbody>
+            <tbody></tbody>
         </table>
 
         <!-- Order Book Graph -->
@@ -141,6 +199,19 @@
         <canvas id="orderBookChart" height="400"></canvas>
 
         <div class="refresh-text">Refreshing every 10 seconds...</div>
+    </div>
+
+    <!-- Movable Terminal -->
+    <div id="terminal">
+        <div id="terminal-header">Terminal</div>
+        <div id="terminal-body">
+            <p id="terminal-text">Waiting for data...</p>
+        </div>
+    </div>
+
+    <!-- Ticker -->
+    <div class="ticker" id="ticker">
+        Refreshing order book...
     </div>
 
     <script>
@@ -195,6 +266,9 @@
                     renderTables();
                     renderMetrics();
                     renderGraph();
+                    
+                    // Update the terminal text
+                    document.getElementById('terminal-text').textContent = `Data updated at: ${new Date().toLocaleTimeString()}`;
                 } else {
                     console.error("Error fetching order book data.");
                 }
@@ -229,23 +303,24 @@
             });
         }
 
-        // Render the additional metrics
+        // Render the key metrics
         function renderMetrics() {
             const highestBuyPrice = Math.max(...buyData.map(order => order.price));
             const lowestSellPrice = Math.min(...sellData.map(order => order.price));
-            const totalBuyVolume = buyData.reduce((sum, order) => sum + order.amount, 0);
-            const totalSellVolume = sellData.reduce((sum, order) => sum + order.amount, 0);
 
-            // Update metrics on the page
+            const totalBuyVolume = buyData.reduce((total, order) => total + order.amount, 0);
+            const totalSellVolume = sellData.reduce((total, order) => total + order.amount, 0);
+
             document.getElementById('highestBuyPrice').textContent = highestBuyPrice.toFixed(8);
             document.getElementById('lowestSellPrice').textContent = lowestSellPrice.toFixed(8);
             document.getElementById('totalBuyVolume').textContent = totalBuyVolume.toFixed(8);
             document.getElementById('totalSellVolume').textContent = totalSellVolume.toFixed(8);
         }
 
-        // Render the graph using Chart.js
+        // Render the graph
         function renderGraph() {
             const ctx = document.getElementById('orderBookChart').getContext('2d');
+
             const buyPrices = buyData.map(order => order.price);
             const buyVolumes = buyData.map(order => order.amount);
             const sellPrices = sellData.map(order => order.price);
@@ -292,15 +367,34 @@
             });
         }
 
-        // Initial load
+        // Make the terminal draggable
+        const terminal = document.getElementById('terminal');
+        const terminalHeader = document.getElementById('terminal-header');
+        let offsetX, offsetY, isDragging = false;
+
+        terminalHeader.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            offsetX = e.clientX - terminal.offsetLeft;
+            offsetY = e.clientY - terminal.offsetTop;
+            terminalHeader.style.cursor = 'grabbing';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                terminal.style.left = `${e.clientX - offsetX}px`;
+                terminal.style.top = `${e.clientY - offsetY}px`;
+            }
+        });
+
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            terminalHeader.style.cursor = 'grab';
+        });
+
+        // Initial load and auto-refresh
         loadStoredData();
-
-        // Fetch the order book every 10 seconds
-        setInterval(fetchOrderBook, 0.1);
-
-        // First fetch
         fetchOrderBook();
+        setInterval(fetchOrderBook, 10000);
     </script>
 </body>
 </html>
-
