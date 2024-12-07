@@ -21,7 +21,7 @@
         /* Ticker Grid Layout */
         .ticker-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 10px;
             padding: 10px;
             width: 100%;
@@ -77,24 +77,28 @@
                 try {
                     const response = await fetch(`https://tradeogre.com/api/v1/ticker/${singleticker}`);
                     const quote = await response.json();
-                    if (!quote.success || !quote.price) continue;
+                    if (!quote.success || !quote.bid || !quote.ask) continue;
 
-                    // Get the current price from the response
-                    const newPrice = parseFloat(quote.price).toFixed(2);
+                    // Get the bid and ask prices
+                    const bidPrice = parseFloat(quote.bid);
+                    const askPrice = parseFloat(quote.ask);
+
+                    // Calculate the mid price (average of bid and ask)
+                    const midPrice = ((bidPrice + askPrice) / 2).toFixed(2);
 
                     // Find the ticker item element
                     const item = document.querySelector(`.ticker-item[data-ticker='${singleticker}']`);
                     
                     // Compare to previous price and apply flash if needed
                     const oldPrice = previousPrices[singleticker];
-                    previousPrices[singleticker] = newPrice;
+                    previousPrices[singleticker] = midPrice;
 
                     // Add flash class if price has changed
                     if (oldPrice !== undefined) {
                         item.classList.remove('flash-up', 'flash-down'); // Reset flash classes
-                        if (newPrice > oldPrice) {
+                        if (midPrice > oldPrice) {
                             item.classList.add('flash-up');
-                        } else if (newPrice < oldPrice) {
+                        } else if (midPrice < oldPrice) {
                             item.classList.add('flash-down');
                         }
 
@@ -102,8 +106,13 @@
                         setTimeout(() => item.classList.remove('flash-up', 'flash-down'), 500);
                     }
 
-                    // Update the ticker text with the new price
-                    item.innerHTML = `<span style="color: #FF00FF;">${singleticker}</span> - $${newPrice}`;
+                    // Update the ticker text with the mid price and bid/ask prices
+                    item.innerHTML = `
+                        <span style="color: #FF00FF;">${singleticker}</span><br>
+                        Mid: $${midPrice}<br>
+                        Bid: $${bidPrice.toFixed(2)}<br>
+                        Ask: $${askPrice.toFixed(2)}
+                    `;
                     
                 } catch (error) {
                     console.error('Error fetching data:', error);
