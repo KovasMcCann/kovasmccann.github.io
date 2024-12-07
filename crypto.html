@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Ticker Display</title>
+    <style>
+        /* Base Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Ticker Grid Layout */
+        .ticker-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 10px;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Ticker Item Styles */
+        .ticker-item {
+            font-family: 'Courier New', Courier, monospace;
+            color: #00FF00;
+            background-color: #000000;
+            padding: 10px;
+            border-radius: 3px;
+            border: 1px solid #00FF00;
+            text-align: center;
+            transition: background-color 0.5s ease;
+        }
+
+        /* Flash Animations */
+        .flash-up { animation: flashUp 0.5s; }
+        .flash-down { animation: flashDown 0.5s; }
+
+        /* Keyframes for Flash Animation */
+        @keyframes flashUp { 0% { background-color: #00ff00; } 100% { background-color: #000000; } }
+        @keyframes flashDown { 0% { background-color: #ff0000; } 100% { background-color: #000000; } }
+    </style>
+</head>
+<body>
+    <!-- Ticker Container with CSS Grid -->
+    <div id="ticker-container" class="ticker-container"></div>
+
+    <script>
+        const tickers = [
+            'BTC-USDT', 'ETH-USDT', 'XMR-USDT', 'LTC-USDT', 'DOGE-USDT', 'ZEC-USDT', 'ADA-USDT', 'XRP-USDT'
+        ];
+        
+        // Store previous prices to track changes
+        const previousPrices = {};
+
+        // Populate ticker items in the container
+        const tickerContainer = document.getElementById('ticker-container');
+        tickers.forEach(ticker => {
+            const item = document.createElement('div');
+            item.className = 'ticker-item';
+            item.dataset.ticker = ticker;
+            item.textContent = `${ticker} - Loading...`;
+            tickerContainer.appendChild(item);
+        });
+
+        // Fetch and update crypto prices with flash effect
+        async function grab() {
+            for (const singleticker of tickers) {
+                try {
+                    const response = await fetch(`https://tradeogre.com/api/v1/tickers/${singleticker}`);
+                    const quote = await response.json();
+                    if (!quote || !quote.result) continue;
+
+                    // Get the current price
+                    const newPrice = parseFloat(quote.result.price).toFixed(2);
+
+                    // Find the ticker item element
+                    const item = document.querySelector(`.ticker-item[data-ticker='${singleticker}']`);
+                    
+                    // Compare to previous price and apply flash if needed
+                    const oldPrice = previousPrices[singleticker];
+                    previousPrices[singleticker] = newPrice;
+
+                    // Add flash class if price has changed
+                    if (oldPrice !== undefined) {
+                        item.classList.remove('flash-up', 'flash-down'); // Reset flash classes
+                        if (newPrice > oldPrice) {
+                            item.classList.add('flash-up');
+                        } else if (newPrice < oldPrice) {
+                            item.classList.add('flash-down');
+                        }
+
+                        // Remove flash class after animation
+                        setTimeout(() => item.classList.remove('flash-up', 'flash-down'), 500);
+                    }
+
+                    // Update the ticker text with the new price
+                    item.innerHTML = `<span style="color: #FF00FF;">${singleticker}</span> - $${newPrice}`;
+                    
+                } catch (error) {
+                    console.error('Error fetching data:', error);
+                }
+            }
+        }
+
+        // Initialize and update prices periodically
+        setInterval(grab, 2000); // Update every 2 seconds
+    </script>
+</body>
+</html>
