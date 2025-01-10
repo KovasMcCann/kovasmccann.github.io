@@ -6,6 +6,6 @@
 ## Todo/Ideas:
 
  - Loveletter font
-  - ``font-family: Loveletter;``
+   - ``font-family: Loveletter;``
  - Blog
 
