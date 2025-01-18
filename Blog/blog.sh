@@ -32,10 +32,8 @@ cat << EOF > "./blog/$name/index.html"
         <h1>$name</h1>
         <p><strong>Date:</strong> $date</p>
         <p><strong>Tag:</strong> $tag</p>
-        <div class="content">
-            <!-- Raw Markdown content inside a div -->
-            <div class="markdown-content">
-                <pre>$markdown_content</pre>  <!-- Display raw Markdown content -->
+        <div class="content" markdown="1">
+		$markdown_content
             </div>
         </div>
     </div>
