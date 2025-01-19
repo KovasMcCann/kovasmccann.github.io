@@ -28,23 +28,16 @@ cat << EOF > "$name.html"
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>$name</title>
-    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
-<!-- <header>
-    <h4 style="border-bottom: solid #ddd 1px; margin: 0;">
-        <a style="text-decoration: none; color: #7171d1;">$name | $date</a> 
-    </h4>
-</header> -->
-
+<body>
 <header style="display: flex; justify-content: space-between; align-items: center; border-bottom: solid #ddd 1px; padding-bottom: 10px;">
     <h4 style="margin: 0;">
         <a href="#" style="text-decoration: none; color: #7171d1;">$name | $date</a>
     </h4>
     <a href="index.html" style="text-decoration: none; color: #7171d1; font-weight: bold;">Home</a>
 </header>
-
-<body>
     <div class="blog-post">
         <!-- Blog post content -->
         $html_content
@@ -106,7 +99,7 @@ if [ ! -f "$index" ]; then
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Blog</title>
-    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
     <h1>Welcome to My Blog</h1>
