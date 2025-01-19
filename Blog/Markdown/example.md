@@ -12,7 +12,7 @@ My names is **John Doe** and I am a *developer*.
 
 ![](../wiby.gif)
 
-![](/IMG/frog\ out\ of\ luck.jpg)
+![](./IMG/frog\ out\ of\ luck.jpg)
 
 ```python
 Print('Hello World');
