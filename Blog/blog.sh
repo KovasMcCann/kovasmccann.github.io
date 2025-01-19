@@ -62,7 +62,6 @@ if [ ! -f "$rss" ]; then
     <description>Recent content Kovas's Webpage</description>
     <language>en-us</language>
     <lastBuildDate>$(date --rfc-2822)</lastBuildDate>
-    <atom:link href="https://kovasmccann.github.io/Blog/index.xml" rel="self" type="application/rss+xml"/>
 EOF
 fi
 
