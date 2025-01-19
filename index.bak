@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kovas McCann</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .logo {
+            display: flex;
+            justify-content: center;
+            white-space: pre;
+            font-family: monospace;
+            font-size: 16px;
+            text-align: center;
+            /*color: #ffffff;
+ 	    text-shadow: rgb(255, 170, 0) 0px 0px 2px;*/
+	    color: #ffffff;
+	    text-shadow: 0px 0px 5px rgba(0, 255, 0, 0.8), 0px 0px 10px rgba(0, 255, 0, 0.8), 0px 0px 20px rgba(0, 255, 0, 0.8); /* Glowing green text shadow */
+            margin-bottom: 20px;
+        }
+        .projects, .about, .contact {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #3b3b3b;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            color: #ffffff;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .projects h2, .about h2, .contact h2 {
+            color: #ffffff;
+            margin-top: 0;
+        }
+        .projects ul, .contact form {
+            list-style-type: none;
+            padding: 0;
+        }
+        .projects li {
+            margin-bottom: 10px;
+        }
+        .contact input, .contact textarea {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: #333;
+            color: #fff;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .contact button {
+            padding: 10px;
+            background-color: #000000;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .contact button:hover {
+            background-color: #0a0a0a;
+        }
+        footer {
+            background-color: #000000;
+            padding: 20px;
+            text-align: center;
+            color: #ffffff;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 14px;
+            }
+            .projects, .about, .contact {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+888    d8P                                 888b     d888         .d8888b.                          
+888   d8P                                  8888b   d8888        d88P  Y88b                         
+888  d8P                                   88888b.d88888        888    888                         
+888d88K     .d88b. 888  888 8888b. .d8888b 888Y88888P888 .d8888b888        8888b. 88888b. 88888b.  
+8888888b   d88""88b888  888    "88b88K     888 Y888P 888d88P"   888           "88b888 "88b888 "88b 
+888  Y88b  888  888Y88  88P.d888888"Y8888b.888  Y8P  888888     888    888.d888888888  888888  888 
+888   Y88b Y88..88P Y8bd8P 888  888     X88888   "   888Y88b.   Y88b  d88P888  888888  888888  888 
+888    Y88b "Y88P"   Y88P  "Y888888 88888P'888       888 "Y8888P "Y8888P" "Y888888888  888888  888 
+        </div>
+
+        <center>
+            <img src="Lock.png" alt="Lock">
+        </center>
+
+        <hr>
+
+        <div class="contact">
+            <h2>Contact</h2>
+            <form action="mailto:kovasmccann@firemail.cc" method="post" enctype="text/plain" class="contact-form">
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group message-group">
+                    <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+            <center>🔒 Ignore Form Insecure Message 🔒</center>
+        </div>
+    </div>
+
+    <footer>
+        <hr>
+        Kovas McCann <script>document.write(new Date().getFullYear())</script><br>
+	<code>
+        XMR Address: 8BtCmvu4XDJUQcLRHe7vTEgXTL8oWj7kDaPq6Eq3DmCbDA1LS8TFMP5KFctzk6t1XoinFjV7Fxg2ZLxwbhd6taqZBwBt9r7
+ 	</code>   
+    </footer>
+</body>
+</html>
