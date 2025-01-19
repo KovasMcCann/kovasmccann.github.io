@@ -8,6 +8,10 @@
 
 My names is **John Doe** and I am a *developer*.
 
+[Kovas](https://kovasmccann.github.io)
+
+![](../wiby.gif)
+
 ```python
 Print('Hello World');
 ```
