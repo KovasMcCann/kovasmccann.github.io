@@ -57,9 +57,9 @@ if [ ! -f "$rss" ]; then
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
 <channel>
-    <title>Kovas's Blog</title>
+    <title>Computing Blog</title>
     <link>https://kovasmccann.github.io</link>
-    <description>Recent content Kovas's Webpage</description>
+    <description>Recent content of the Blog</description>
     <language>en-us</language>
     <lastBuildDate>$(date --rfc-2822)</lastBuildDate>
 EOF
