@@ -103,7 +103,7 @@ fi
 # Append the new post link to index.html
 cat << EOF >> "$index"
     <div class="post">
-        <h2><a href="/blog/$name.html">$name</a></h2>
+        <h2><a href="/Blog/$name.html">$name</a></h2>
         <p><strong>Date:</strong> $date</p>
         <p><strong>Tag:</strong> $tag</p>
     </div>
