@@ -1,7 +1,7 @@
 #!/bin/bash
 
 location="$1"  # Assume the Markdown file is passed as the first argument
-name=$(basename "$location" .md)  # Get the filename without the .md extension
+name=$(basename "$location" .html)  # Get the filename without the .md extension
 date=$(grep -m 1 "^# Date" $location | cut -d " " -f 3-)
 tag=$(grep -m 1 "^# Tag" $location | cut -d " " -f 3-)
 
@@ -17,28 +17,41 @@ echo "Creating a new blog post with the title $name and the date $date and the t
 markdown_content=$(cat "$location")
 
 # Convert Markdown to HTML using pandoc (updated to use --embed-resources and --standalone)
-html_content=$(echo "$markdown_content" | pandoc -s --embed-resources --standalone --metadata title="$name")
+html_content=$(echo "$markdown_content")
 
 # Create the HTML file for the new blog post
 cat << EOF > "$name.html"
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>$name</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
 </head>
+
+<!-- <header>
+    <h4 style="border-bottom: solid #ddd 1px; margin: 0;">
+        <a style="text-decoration: none; color: #7171d1;">$name | $date</a> 
+    </h4>
+</header> -->
+
+<header style="display: flex; justify-content: space-between; align-items: center; border-bottom: solid #ddd 1px; padding-bottom: 10px;">
+    <h4 style="margin: 0;">
+        <a href="#" style="text-decoration: none; color: #7171d1;">$name | $date</a>
+    </h4>
+    <a href="index.html" style="text-decoration: none; color: #7171d1; font-weight: bold;">Home</a>
+</header>
+
 <body>
     <div class="blog-post">
-        <h1>$name</h1>
-        <p><strong>Date:</strong> $date</p>
-        <p><strong>Tag:</strong> $tag</p>
-        <div class="content">
-            $html_content
-        </div>
+        <!-- Blog post content -->
+        $html_content
     </div>
 </body>
 </html>
+
 EOF
 
 echo "Blog post created with the title $name and the date $date"
@@ -93,6 +106,7 @@ if [ ! -f "$index" ]; then
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Blog</title>
+    <link rel="stylesheet" type="text/css" href="../styles.css">
 </head>
 <body>
     <h1>Welcome to My Blog</h1>

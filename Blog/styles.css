@@ -1,0 +1,76 @@
+
+@font-face {
+  font-family: 'Cyber';
+  src: url('fonts/paragraph.ttf') format('truetype');
+  font-weight: normal; /* Optional: specify the weight of the font */
+  font-style: normal;  /* Optional: specify the style of the font */
+}
+
+body {
+  background-color: #02000a; /* Dark background for hacker vibe */
+  color: #ffffff; /* Bright white text for readability */
+  font-family: 'Cyber', monospace;
+  font-weight: normal; /* Lighter weight for text */
+}
+
+H1 {
+  font-size: 30px;
+  color: #ffffff; /* White for the main heading */
+  font-weight: normal; /* Normal weight for headings */
+}
+
+H2 {
+  font-size: 22px;
+  padding: 1px;
+  color: #dcdcdc; /* Light gray for subheadings */
+  font-weight: normal; /* Normal weight for subheadings */
+}
+
+H3 {
+  font-size: 25px;
+  color: #cccccc; /* Soft light gray for smaller headings */
+  font-weight: normal; /* Normal weight for smaller headings */
+}
+
+H4 {
+  font-size: 18px;
+  color: #b0b0b0; /* Medium gray for smaller headings */
+  font-weight: normal; /* Normal weight for headings */
+}
+
+H5 {
+  font-size: 12px;
+  color: #999999; /* Darker gray for the smallest heading */
+  font-weight: normal; /* Normal weight for smallest heading */
+}
+
+P {
+  font-size: 18px;
+  color: #e0e0e0; /* Light gray for paragraph text */
+  font-weight: normal; /* Normal weight for paragraphs */
+}
+
+code {
+  font-size: 16px;
+  padding: 5px;
+  color: #00ff00; /* Neon green text for code */
+  background-color: #1a1a1a; /* Darker background for terminal-like code */
+  border-radius: 4px;
+  border: 1px solid #00ff00; /* Neon green border for terminal feel */
+  font-weight: normal; /* Normal weight for code */
+}
+
+ul {
+  color: #e0e0e0; /* Light gray text for lists */
+  font-weight: normal; /* Normal weight for lists */
+}
+
+a:link, a:visited, a:active {
+  color: #00ff00; /* Neon green for links */
+  font-weight: normal; /* Normal weight for links */
+}
+
+a:hover {
+  color: #33cc33; /* Lighter green when hovering over links */
+  font-weight: normal; /* Normal weight on hover */
+}
