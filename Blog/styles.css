@@ -74,3 +74,8 @@ a:hover {
   color: #33cc33; /* Lighter green when hovering over links */
   font-weight: normal; /* Normal weight on hover */
 }
+
+.post {
+  text-align: center;
+
+}

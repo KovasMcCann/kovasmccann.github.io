@@ -32,12 +32,13 @@ cat << EOF > "$name.html"
 </head>
 
 <body>
-<header style="display: flex; justify-content: space-between; align-items: center; border-bottom: solid #ddd 1px; padding-bottom: 10px;">
+<header style="top: 0; position: sticky; z-index: 10; background-color: #02000a; display: flex; justify-content: space-between; align-items: center; border-bottom: solid #ddd 1px; padding-bottom: 10px;">
     <h4 style="margin: 0;">
         <a href="#" style="text-decoration: none; color: #7171d1;">$name | $date</a>
     </h4>
     <a href="index.html" style="text-decoration: none; color: #7171d1; font-weight: bold;">Home</a>
-</header>
+</header> 
+    <!-- Your page content goes here -->
     <div class="blog-post">
         <!-- Blog post content -->
         $html_content
