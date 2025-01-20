@@ -1,5 +1,14 @@
+
+@font-face {
+  font-family: 'Cyber';
+  src: url('Blog/fonts/paragraph.ttf') format('truetype');
+  font-weight: normal; /* Optional: specify the weight of the font */
+  font-style: normal;  /* Optional: specify the style of the font */
+}
+
 body {
-        font-family: Arial, sans-serif;
+  	font-family: 'Cyber', monospace;
+  	font-weight: normal;
         background-color: #000000;
         margin: 0;
         padding: 0;
