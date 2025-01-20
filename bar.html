@@ -1,12 +1,85 @@
-<header style="top: 0; position: sticky; z-index: 10; background-color: #02000a; display: flex; justify-content: flex-start; align-items: center; border-bottom: solid #ddd 1px; padding-bottom: 10px;">
-    <h4 style="margin: 0; padding-right: 20px;">
-        <a href="/index.html" style="text-decoration: none; color: #e0e0e0;" target="_top">Home</a>
-    </h4>
-    <h4 style="margin: 0; padding-right: 20px;">
-        <a href="/stonks.html" style="text-decoration: none; color: #e0e0e0;" target="_top">Ticker</a>
-    </h4>
-    <h4 style="margin: 0;">
-        <a href="/Blog/index.html" style="text-decoration: none; color: #e0e0e0;" target="_top">Blog</a>
-    </h4>
-</header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Header with Full-Width Border</title>
+    <style>
+        @font-face {
+            font-family: 'Cyber';
+            src: url('Blog/fonts/paragraph.ttf') format('truetype');
+            font-weight: normal; /* Optional: specify the weight of the font */
+            font-style: normal;  /* Optional: specify the style of the font */
+        }
+
+        body {
+            font-family: 'Cyber', monospace;
+            font-weight: normal;
+            background-color: #000000;
+            margin: 5; /* Remove default margin */
+            padding: 0;
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+        }
+
+        /* Link styles */
+        a {
+            text-decoration: none; /* Remove underlines from links */
+            color: #e0e0e0; /* Default link color */
+        }
+
+        a:link, a:visited, a:active {
+            color: #e0e0e0; /* Neon light gray for normal, visited, and active states */
+        }
+
+        a:hover {
+            color: #ffffff; /* Lighter green when hovering over links */
+	    text-shadow: 0px 0px 5px rgba(0, 255, 0, 0.8), 0px 0px 10px rgba(0, 255, 0, 0.8), 0px 0px 20px rgba(0, 255, 0, 0.8);
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background-color: #02000a;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            border-bottom: solid #ddd 1px;
+            padding-bottom: 10px;
+            width: 100%; /* Ensure header is full-width */
+        }
+
+        header::after {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: #ddd;
+        }
+
+        h4 {
+            margin: 0;
+            padding-right: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h4>
+            <a href="/index.html" target="_top">Home</a>
+        </h4>
+        <h4>
+            <a href="/stonks.html" target="_top">Ticker</a>
+        </h4>
+        <h4>
+            <a href="/Blog/index.html" target="_top">Blog</a>
+        </h4>
+    </header>
+</body>
+</html>
 
