@@ -1,6 +1,13 @@
 
 @font-face {
-  font-family: 'Cyber';
+  font-family: 'heading';
+  src: url('fonts/heading.wolf') format('truetype');
+  font-weight: normal; /* Optional: specify the weight of the font */
+  font-style: normal;  /* Optional: specify the style of the font */
+}
+
+@font-face{
+  font-family: 'paragraph';
   src: url('fonts/paragraph.ttf') format('truetype');
   font-weight: normal; /* Optional: specify the weight of the font */
   font-style: normal;  /* Optional: specify the style of the font */
@@ -9,17 +16,19 @@
 body {
   background-color: #02000a; /* Dark background for hacker vibe */
   color: #ffffff; /* Bright white text for readability */
-  font-family: 'Cyber', monospace;
+  /* font-family: 'Cyber', monospace; */
   font-weight: normal; /* Lighter weight for text */
 }
 
 H1 {
+  font-family: 'heading', monospace;
   font-size: 30px;
   color: #ffffff; /* White for the main heading */
   font-weight: normal; /* Normal weight for headings */
 }
 
 H2 {
+  font-family: 'heading', monospace;
   font-size: 22px;
   padding: 1px;
   color: #dcdcdc; /* Light gray for subheadings */
@@ -27,30 +36,35 @@ H2 {
 }
 
 H3 {
+  font-family: 'heading', monospace;
   font-size: 25px;
   color: #cccccc; /* Soft light gray for smaller headings */
   font-weight: normal; /* Normal weight for smaller headings */
 }
 
 H4 {
+  font-family: 'heading', monospace;
   font-size: 18px;
   color: #b0b0b0; /* Medium gray for smaller headings */
   font-weight: normal; /* Normal weight for headings */
 }
 
 H5 {
+  font-family: 'heading', monospace;
   font-size: 12px;
   color: #999999; /* Darker gray for the smallest heading */
   font-weight: normal; /* Normal weight for smallest heading */
 }
 
 P {
+  font-family: 'paragraph', monospace;
   font-size: 18px;
   color: #e0e0e0; /* Light gray for paragraph text */
   font-weight: normal; /* Normal weight for paragraphs */
 }
 
 code {
+  font-family: 'paragraph', monospace;
   font-size: 16px;
   padding: 5px;
   color: #00ff00; /* Neon green text for code */
@@ -61,21 +75,25 @@ code {
 }
 
 ul {
+  font-family: 'paragraph', monospace;
   color: #e0e0e0; /* Light gray text for lists */
   font-weight: normal; /* Normal weight for lists */
 }
 
 a:link, a:visited, a:active {
+  font-family: 'paragraph', monospace;
   color: #00ff00; /* Neon green for links */
   font-weight: normal; /* Normal weight for links */
 }
 
 a:hover {
+  font-family: 'paragraph', monospace;
   color: #33cc33; /* Lighter green when hovering over links */
   font-weight: normal; /* Normal weight on hover */
 }
 
 .post {
+  font-family: 'paragraph', monospace;
   text-align: center;
 
 }
