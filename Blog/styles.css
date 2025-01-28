@@ -1,16 +1,16 @@
 
 @font-face {
   font-family: 'heading';
-  src: url('fonts/heading.wolf') format('truetype');
-  font-weight: normal; /* Optional: specify the weight of the font */
-  font-style: normal;  /* Optional: specify the style of the font */
+  src: url('fonts/heading.woff') format('truetype');
+  /*font-weight: normal; /* Optional: specify the weight of the font */
+  /*font-style: normal;  /* Optional: specify the style of the font */
 }
 
 @font-face{
   font-family: 'paragraph';
   src: url('fonts/paragraph.ttf') format('truetype');
-  font-weight: normal; /* Optional: specify the weight of the font */
-  font-style: normal;  /* Optional: specify the style of the font */
+  /*font-weight: normal; /* Optional: specify the weight of the font */
+  /*font-style: normal;  /* Optional: specify the style of the font */
 }
 
 body {
