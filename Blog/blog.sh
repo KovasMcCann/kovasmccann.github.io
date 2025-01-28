@@ -68,7 +68,7 @@ fi
 # Append the new post entry to the RSS feed (without breaking the XML structure)
 # Read the current RSS file and append the new <item> entry
 temp_rss=$(mktemp)
-grep -v '</channel>' "$rss" > "$temp_rss"  # Remove the closing </channel> temporarily
+grep -v -e '</channel>' -e '</rss>' "$rss" > "$temp_rss"  # Remove the closing </channel> temporarily
 cat << EOF >> "$temp_rss"
     <item>
         <title>$name</title>
@@ -129,4 +129,3 @@ if [ ! -f "$index" ]; then
 fi
 
 echo "Index page updated at $index"
-
