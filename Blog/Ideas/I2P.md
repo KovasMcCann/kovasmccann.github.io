@@ -3,21 +3,13 @@
 # Title: Markdown Example
 # Date: 2021-09-01
 -->
+<center>
+<!-- <h1> I2P </h1> -->
+<img src="./IMG/I2P.png">  
+<p> <b>I</b>nvisable <b>I</b>nternet <b>P</b>roject </p>
+</center>
 
-## What is I2P
+<h2>What is I2P?</h2>
 
-I2P is a hidden 
+<p>I2P is a peer-to-peer Anonymous Network that uses garlic routing (not to be confused with onion routing) to anonymize its users.</p>
 
-My names is **John Doe** and I am a *developer*.
-
-[Kovas](https://kovasmccann.github.io)
-
-![](../wiby.gif)
-
-![](./IMG/frog\ out\ of\ luck.jpg)
-
-```python
-Print('Hello World');
-```
-
-### This is a markdown file
