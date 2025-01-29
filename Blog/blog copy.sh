@@ -137,7 +137,7 @@ fi
 # Insert new post at the beginning for newest-first sorting
 temp_file=$(mktemp)
 echo "    <div class=\"post\">" > "$temp_file"
-echo "        <h2><a href=\"/Blog/$name.html\">$name</a></h2>" >> "$temp_file"
+echo "        <h2><a href=\"/Blog/$name.html\" style=\"font-family: 'heading', monospace;\">$name</a></h2>" >> "$temp_file"
 echo "        <p><strong>Date:</strong> $date</p>" >> "$temp_file"
 echo "        <p><strong>Tag:</strong> $tag</p>" >> "$temp_file"
 echo "    </div>" >> "$temp_file"
