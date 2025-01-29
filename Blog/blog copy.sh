@@ -106,9 +106,13 @@ if [ ! -f "$index" ]; then
             padding: 20px;
         }
         .post {
-            border: 1px solid #ddd;
-            padding: 15px;
-            background-color: #f9f9f9;
+            color: #00FF00;
+            background-color: #000000;
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid #00FF00;
+            text-align: center;
+            transition: background-color 0.5s ease;
         }
         header {
             top: 0; 
