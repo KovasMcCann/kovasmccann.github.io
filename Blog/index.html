@@ -5,9 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Blog</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        .posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+            padding: 20px;
+        }
+        .post {
+            border: 1px solid #ddd;
+            padding: 15px;
+            background-color: #f9f9f9;
+        }
+        header {
+            top: 0; 
+            position: sticky; 
+            z-index: 10; 
+            background-color: #02000a; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: solid #ddd 1px; 
+            padding-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
-<header style="top: 0; position: sticky; z-index: 10; background-color: #02000a; display: flex; justify-content: space-between; align-items: center; border-bottom: solid #ddd 1px; padding-bottom: 10px;">
+<header>
     <h4 style="margin: 0;">
         <a href="#" style="text-decoration: none; color: #7171d1;">Welcome to My Blog</a>
     </h4>
@@ -15,12 +39,12 @@
 </header> 
     <div class="posts">
     <div class="post">
-        <h2><a href="/Blog/I2P.html">I2P</a></h2>
-        <p><strong>Date:</strong> 2025-01-28</p>
+        <h2><a href="/Blog/example.html">example</a></h2>
+        <p><strong>Date:</strong> 2021-09-01</p>
         <p><strong>Tag:</strong> Computing</p>
     </div>
     <div class="post">
-        <h2><a href="/Blog/example.html">example</a></h2>
-        <p><strong>Date:</strong> 2021-09-01</p>
+        <h2><a href="/Blog/I2P.html">I2P</a></h2>
+        <p><strong>Date:</strong> 2025-01-28</p>
         <p><strong>Tag:</strong> Computing</p>
     </div>
