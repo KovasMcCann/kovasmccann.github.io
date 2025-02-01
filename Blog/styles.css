@@ -1,33 +1,27 @@
-
 @font-face {
   font-family: 'heading';
-  src: url('fonts/heading.woff') format('truetype');
-  /*font-weight: normal; /* Optional: specify the weight of the font */
-  /*font-style: normal;  /* Optional: specify the style of the font */
+  src: url('fonts/heading.woff') format('woff'), url('fonts/heading.ttf') format('truetype');
 }
 
-@font-face{
+@font-face {
   font-family: 'paragraph';
   src: url('fonts/paragraph.ttf') format('truetype');
-  /*font-weight: normal; /* Optional: specify the weight of the font */
-  /*font-style: normal;  /* Optional: specify the style of the font */
 }
 
 body {
   background-color: #02000a; /* Dark background for hacker vibe */
   color: #ffffff; /* Bright white text for readability */
-  /* font-family: 'Cyber', monospace; */
   font-weight: normal; /* Lighter weight for text */
 }
 
-H1 {
+h1 {
   font-family: 'heading', monospace;
   font-size: 30px;
   color: #ffffff; /* White for the main heading */
   font-weight: normal; /* Normal weight for headings */
 }
 
-H2 {
+h2 {
   font-family: 'heading', monospace;
   font-size: 22px;
   padding: 1px;
@@ -35,28 +29,28 @@ H2 {
   font-weight: normal; /* Normal weight for subheadings */
 }
 
-H3 {
+h3 {
   font-family: 'heading', monospace;
   font-size: 25px;
   color: #cccccc; /* Soft light gray for smaller headings */
   font-weight: normal; /* Normal weight for smaller headings */
 }
 
-H4 {
+h4 {
   font-family: 'heading', monospace;
   font-size: 18px;
   color: #b0b0b0; /* Medium gray for smaller headings */
   font-weight: normal; /* Normal weight for headings */
 }
 
-H5 {
+h5 {
   font-family: 'heading', monospace;
   font-size: 12px;
   color: #999999; /* Darker gray for the smallest heading */
   font-weight: normal; /* Normal weight for smallest heading */
 }
 
-P {
+p {
   font-family: 'paragraph', monospace;
   font-size: 18px;
   color: #e0e0e0; /* Light gray for paragraph text */
@@ -95,5 +89,33 @@ a:hover {
 .post {
   font-family: 'paragraph', monospace;
   text-align: center;
-
 }
+
+.Word {
+  position: relative;
+  cursor: pointer; /* Indicates that it's interactive */
+}
+
+.Definition {
+  display: none;
+  font-family: serif;
+  color: #fff;
+  background-color: #000;
+  position: absolute;
+  z-index: 1000;
+  top: 100%; /* Places the tooltip directly below the word */
+  left: 0;
+  width: 300px; /* Set a fixed width for the tooltip */
+  height: auto; /* Adjust height automatically */
+  padding: 10px;
+  opacity: 0;
+  pointer-events: none; /* Tooltip won't block interactions on the word */
+  transition: opacity 0.2s ease-in-out; /* Smooth transition */
+}
+
+.Word:hover .Definition {
+  display: block;
+  opacity: 1;
+  pointer-events: auto; /* Enable interaction */
+}
+
