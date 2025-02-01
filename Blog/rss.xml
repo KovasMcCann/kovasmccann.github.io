@@ -5,19 +5,19 @@
     <link>https://kovasmccann.github.io</link>
     <description>Recent content of the Blog</description>
     <language>en-us</language>
-    <lastBuildDate>Sat, 01 Feb 2025 16:35:34 -0600</lastBuildDate>
-    <item>
-        <title>example</title>
-        <link>https://kovasmccann.github.io/Blog/example.html</link>
-        <pubDate>Wed, 01 Sep 2021 00:00:00 -0500</pubDate>
-        <guid>https://kovasmccann.github.io/Blog/example.html</guid>
-        <description></description>
-    </item>
+    <lastBuildDate>Sat, 01 Feb 2025 22:42:40 +0000</lastBuildDate>
     <item>
         <title>I2P</title>
         <link>https://kovasmccann.github.io/Blog/I2P.html</link>
-        <pubDate>Tue, 28 Jan 2025 00:00:00 -0600</pubDate>
+        <pubDate>Tue, 28 Jan 2025 00:00:00 +0000</pubDate>
         <guid>https://kovasmccann.github.io/Blog/I2P.html</guid>
+        <description></description>
+    </item>
+    <item>
+        <title>example</title>
+        <link>https://kovasmccann.github.io/Blog/example.html</link>
+        <pubDate>Wed, 01 Sep 2021 00:00:00 +0000</pubDate>
+        <guid>https://kovasmccann.github.io/Blog/example.html</guid>
         <description></description>
     </item>
 </channel>
