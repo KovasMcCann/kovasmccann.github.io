@@ -39,7 +39,7 @@ cat << EOF > "$name.html"
     <a href="index.html" style="text-decoration: none; color: #7171d1; font-weight: bold;">Home</a>
 </header> 
     <!-- Your page content goes here -->
-    <div class="blog-post">
+    <div class="blog-post" style="max-width: 800px; margin: auto;">
         <!-- Blog post content -->
         $html_content
     </div>
