@@ -78,24 +78,28 @@ First you're going to need to create a i2p router using <a href="https://i2pd.we
 
 <p>
 Install apt-transport-https package
+</p>
 
 <code>
 sudo apt-get install apt-transport-https
 </code>
 
+<p>
 Automatically add repository
+</p>
 
 <code>
 wget -q -O - https://repo.i2pd.xyz/.help/add_repo | sudo bash -s -
 </code>
 
+<p>
 After that you can install i2pd as any other software package:
+</p>
 
 <code>
 sudo apt-get update
 sudo apt-get install i2pd
 </code>
-</p>
 
 Once i2pd is installed you will need to configure <code>/etc/i2pd/i2pd.conf</code>
 
@@ -107,7 +111,7 @@ you can view my "patch" of i2pd <a href="./Resources/myconfig.patch">here</a> al
 you're going to want to proxy you're connection through the i2p router it will look something like this.
 </p>
 
-<img href="./IMG/I2P_ProxyConf.png" width="550" height="300">
+<img src="./IMG/I2P_ProxyConf.png" width="550" height="300">
 
 <p>
 After that you're all set!!
