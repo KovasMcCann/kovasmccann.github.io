@@ -34,9 +34,9 @@ cat << EOF > "$name.html"
 <body>
 <header style="top: 0; position: sticky; z-index: 10; background-color: #02000a; display: flex; justify-content: space-between; align-items: center; border-bottom: solid #ddd 1px; padding-bottom: 10px;">
     <h4 style="margin: 0;">
-        <a href="#" style="text-decoration: none; color: #7171d1;">$name | $date</a>
+        <a href="#" style="text-decoration: none; color: #7171d1; font-family: 'paragraph', monospace;">$name | $date</a>
     </h4>
-    <a href="index.html" style="text-decoration: none; color: #7171d1; font-weight: bold;">Home</a>
+    <a href="index.html" style="text-decoration: none; color: #7171d1; font-weight: bold;font-family: 'paragraph', monospace;">Home</a>
 </header> 
     <!-- Your page content goes here -->
     <div class="blog-post" style="max-width: 800px; margin: auto;">
@@ -130,9 +130,9 @@ if [ ! -f "$index" ]; then
 <body>
 <header>
     <h4 style="margin: 0;">
-        <a href="#" style="text-decoration: none; color: #7171d1;">Welcome to My Blog</a>
+        <a href="#" style="text-decoration: none; color: #7171d1; font-family: 'paragraph', monospace;">Welcome to My Blog</a>
     </h4>
-    <a href="rss.xml" style="text-decoration: none; color: #e26a2d; font-weight: bold;">RSS</a>
+    <a href="rss.xml" style="text-decoration: none; color: #e26a2d; font-weight: bold;font-family: 'paragraph', monospace;">RSS</a>
 </header> 
     <div class="posts">
 EOF

@@ -51,37 +51,37 @@ h5 {
 }
 
 p {
-  font-family: 'paragraph', monospace;
+  /*font-family: 'paragraph', monospace;*/
+  font-family: 'serif', monospace;
   font-size: 18px;
   color: #e0e0e0; /* Light gray for paragraph text */
   font-weight: normal; /* Normal weight for paragraphs */
 }
 
 code {
-  font-family: 'paragraph', monospace;
-  font-size: 16px;
-  padding: 5px;
-  color: #00ff00; /* Neon green text for code */
-  background-color: #1a1a1a; /* Darker background for terminal-like code */
-  border-radius: 4px;
-  border: 1px solid #00ff00; /* Neon green border for terminal feel */
-  font-weight: normal; /* Normal weight for code */
+  /*font-family: 'paragraph', monospace;*/
+  font-family: 'serif', monospace;
+  /*font-size: 16px;*/
+  color: #0d0; /* Neon green text for code */
 }
 
 ul {
-  font-family: 'paragraph', monospace;
+  /*font-family: 'paragraph', monospace;*/
+  font-family: 'serif', monospace;
   color: #e0e0e0; /* Light gray text for lists */
   font-weight: normal; /* Normal weight for lists */
 }
 
 a:link, a:visited, a:active {
-  font-family: 'paragraph', monospace;
+  /*font-family: 'paragraph', monospace;*/
+  font-family: 'serif', monospace;
   color: #00ff00; /* Neon green for links */
   font-weight: normal; /* Normal weight for links */
 }
 
 a:hover {
-  font-family: 'paragraph', monospace;
+  /*font-family: 'paragraph', monospace;*/
+  font-family: 'serif', monospace;
   color: #33cc33; /* Lighter green when hovering over links */
   font-weight: normal; /* Normal weight on hover */
 }
