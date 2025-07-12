@@ -1,133 +1,131 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I2P</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>I2P</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
 <body>
-<header style="top: 0; position: sticky; z-index: 10; background-color: #02000a; display: flex; justify-content: space-between; align-items: center; border-bottom: solid #ddd 1px; padding-bottom: 10px;">
-    <h4 style="margin: 0;">
-        <a href="#" style="text-decoration: none; color: #7171d1; font-family: 'paragraph', monospace;">I2P | 2025-01-28</a>
-    </h4>
-    <a href="index.html" style="text-decoration: none; color: #7171d1; font-weight: bold;font-family: 'paragraph', monospace;">Home</a>
-</header> 
-    <!-- Your page content goes here -->
-    <div class="blog-post" style="max-width: 800px; margin: auto;">
-        <!-- Blog post content -->
-        <!-- 
-# Tag: Computing
-# Title: Markdown Example
-# Date: 2025-01-28
--->
+<header class="sticky-header">
+  <h4>
+    <a href="#" class="site-link">I2P | 2025-01-28</a>
+  </h4>
+  <a href="index.html" class="home-link">Home</a>
+</header>
 
-<center>
-	<a href="https://geti2p.net"><img src="./IMG/I2P.png" width="500" height="100"></a>
-  <p style="font-family: serif; font-style: italic; font-size: small"><b>I</b>nvisible <b>I</b>nternet <b>P</b>roject </p>
-</center>
+<div class="blog-post" style="max-width: 800px; margin: auto;">
 
-<h1>What is I2P?</h1>
-<p>I2P is a peer-to-peer Anonymous Network that uses 
-<span class="Word">garlic routing
+  <figure>
+    <a href="https://geti2p.net">
+      <img src="./IMG/I2P.png" width="500" height="100" alt="I2P Logo">
+    </a>
+    <figcaption style="font-family: serif; font-style: italic; font-size: small;">
+      <b>I</b>nvisible <b>I</b>nternet <b>P</b>roject
+    </figcaption>
+  </figure>
+
+  <h1>What is I2P?</h1>
+  <p>
+    I2P is a peer-to-peer anonymous network that uses 
+    <span class="Word">Garlic Routing
       <span class="Definition">Garlic routing sends multiple encrypted messages (called "garlic cloves") together in one packet. This makes it harder to trace, as multiple messages are combined, and the network cannot easily distinguish which message belongs to which user.</span>
-</span> (not to be confused with onion routing) to anonymize its users.</p>
+    </span>
+    to anonymize its users (not to be confused with onion routing).
+  </p>
 
-<h1>How I2P Works</h1>
+  <h2>How I2P Works</h2>
 
-<img src="./IMG/I2P_Diagram.png" width="550" height="300">
-	
-<p> 
-i2p uses cryptography to provide various features for the tunnels it creates and the communications it carries. It uses two transport protocols, <a href="https://geti2p.net/spec/ntcp2">NTCP2</a> and <a href="https://geti2p.net/spec/ssu2">SSU2</a>, to obscure the traffic passing through its tunnels. Connections are encrypted both between routers and between clients (end-to-end). All connections also ensure forward secrecy. Since i2p uses cryptographic addressing, the network addresses are self-authenticating, and only the user who created them has ownership.
-</p>
+  <img src="./IMG/I2P_Diagram.png" width="550" height="300" alt="Diagram showing how I2P works">
 
-<p>
-The i2p network consists of peers (referred to as "routers") and unidirectional virtual tunnels for both inbound and outbound traffic. Routers communicate using protocols based on common transport mechanisms like TCP and UDP to exchange messages. Client applications are assigned a unique cryptographic identifier called a "Destination," which allows them to send and receive messages. These clients can connect to any router, requesting temporary tunnel "leases" for message transmission. i2p also has an internal database, based on a modified Kademlia DHT, to securely distribute routing and contact information.
-</p>
+  <p>
+    I2P uses cryptography to provide various features for the tunnels it creates and the communications it carries. It uses two transport protocols, <a href="https://geti2p.net/spec/ntcp2">NTCP2</a> and <a href="https://geti2p.net/spec/ssu2">SSU2</a>, to obscure traffic. Connections are encrypted both between routers and between clients (end-to-end), and ensure forward secrecy.
+  </p>
 
-<h1>Use Cases</h1>
-<ul>
-  <li><a href="#eepsites">eepsites</a></li>
-  <li><a href="#Torrents">Torrents</a></li>
-  <li><a href="#IRC"><div class="Word">IRC<div class="Definition">a real-time messaging protocol that allows users to communicate in text-based chat rooms. It was created in 1988 and became one of the earliest popular platforms for online discussions and collaboration. IRC operates on a client-server model, with users connecting to specific servers to join channels (chat rooms) where they can interact with others.</div></div>
-  </a></li>
-  <li><a href="#OutBoundProxy">PROXY</a></li>
-  <li><a href="#Clearnet"><div class="Word">clearnet<div class="Definition">the portion of the internet that is accessible through standard web browsers and search engines.</div></div></a></li>
-</ul>
+  <p>
+    The I2P network consists of peers ("routers") and unidirectional virtual tunnels for both inbound and outbound traffic. Client applications are assigned a unique cryptographic identifier called a "Destination," which allows them to send and receive messages anonymously. I2P also includes a distributed database based on a modified Kademlia DHT to securely share routing and contact information.
+  </p>
 
-<h1 id="eepsites">eepsites</h1>
+  <h2>Use Cases</h2>
+  <ul>
+    <li><a href="#eepsites">Eepsites</a></li>
+    <li><a href="#torrents">Torrents</a></li>
+    <li><a href="#irc"><span class="Word">IRC<span class="Definition">A real-time messaging protocol created in 1988 that allows users to communicate in text-based chat rooms.</span></span></a></li>
+    <li><a href="#proxy">Proxy</a></li>
+    <li><a href="#clearnet"><span class="Word">Clearnet<span class="Definition">The portion of the internet that is accessible through standard web browsers and search engines.</span></span></a></li>
+  </ul>
 
-<h2>How to access I2P</h2>
+  <h2 id="eepsites">Eepsites</h2>
+  <p>
+    I2P hosts anonymous websites called "eepsites" that can only be accessed through the I2P network.
+  </p>
 
-<p>
-I2p is a fascinating network with a lot of cool blogs that you can explore. This section will cover how you can access it.
-</p>
+  <h3>How to Access I2P</h3>
+  <p>First, you’ll need to set up an I2P router using <a href="https://i2pd.website/">i2pd</a>.</p>
 
-<p>
-First you're going to need to create a i2p router using <a href="https://i2pd.website/">i2pd</a>
-</p>
+  <p>Install the transport package:</p>
+  <pre><code>sudo apt-get install apt-transport-https</code></pre>
 
-<p>
-Install apt-transport-https package
-</p>
+  <p>Add the repository:</p>
+  <pre><code>wget -q -O - https://repo.i2pd.xyz/.help/add_repo | sudo bash -s -</code></pre>
 
-<code>
-sudo apt-get install apt-transport-https
-</code>
+  <p>Install i2pd:</p>
+  <pre><code>sudo apt-get update
+sudo apt-get install i2pd</code></pre>
 
-<p>
-Automatically add repository
-</p>
+  <p>Then configure <code>/etc/i2pd/i2pd.conf</code>. You can view my patch <a href="./Resources/myconfig.patch">here</a> and check the <a href="https://i2pd.readthedocs.io/en/latest/user-guide/configuration/">documentation</a>.</p>
 
-<code>
-wget -q -O - https://repo.i2pd.xyz/.help/add_repo | sudo bash -s -
-</code>
+  <p>Next, set up your browser (Librewolf recommended) to proxy traffic through your I2PD router:</p>
+  <figure>
+    <img src="./IMG/I2P_ProxyConf.png" width="450" height="300" alt="Proxy configuration screenshot">
+    <figcaption>Example of browser proxy configuration for I2P</figcaption>
+  </figure>
 
-<p>
-After that you can install i2pd as any other software package:
-</p>
+  <p>Some starting websites (only accessible via I2P):</p>
+  <ul>
+    <li><a href="http://identiguy.i2p">identiguy.i2p</a></li>
+    <li><a href="http://notbob.i2p">notbob.i2p</a></li>
+    <li><a href="http://reg.i2p">reg.i2p</a></li>
+  </ul>
 
-<code>
-sudo apt-get update
-sudo apt-get install i2pd
-</code>
+  <h2 id="torrents">Torrents</h2>
+  <p>
+    I2P supports anonymous torrenting using applications like <a href="https://github.com/i2p/i2p.plugins.snaketorrent">I2PSnark</a>. It is built into many I2P router consoles.
+  </p>
+  <ul>
+    <li>Launch I2PSnark from the router console (usually at <code>127.0.0.1:7657</code>)</li>
+    <li>Add .torrent files or magnet links</li>
+    <li>All torrent traffic is routed through I2P tunnels</li>
+  </ul>
+  <p>This allows fully anonymous peer-to-peer file sharing, independent of the clearnet.</p>
 
-<p>
-Once i2pd is installed you will need to configure "/etc/i2pd/i2pd.conf"
-</p>
+  <h2 id="irc">IRC</h2>
+  <p>
+    IRC is still popular on I2P. There are several public IRC servers available on the I2P network, such as:
+  </p>
+  <ul>
+    <li><code>irc.postman.i2p</code> - Popular IRC server with multiple channels</li>
+    <li><code>irc.echelon.i2p</code> - Privacy-focused discussions</li>
+  </ul>
+  <p>
+    You can connect to these using an IRC client (like HexChat or Irssi) configured to connect through your I2P router's proxy (usually SOCKS5 at <code>127.0.0.1:4447</code>).
+  </p>
 
-You can view my "patch" of i2pd <a href="./Resources/myconfig.patch">here</a> also view the <a href="https://i2pd.readthedocs.io/en/latest/user-guide/configuration/">documentation</a>.
+  <h2 id="proxy">Proxy</h2>
+  <p>
+    I2P can be used as an outbound proxy to anonymize your traffic. This is known as an "outproxy." Unlike Tor, I2P does not have many reliable outproxies due to its design philosophy.
+  </p>
+  <p>
+    However, a few services allow limited access to clearnet sites through I2P. These should be used with caution as they may leak identifying information.
+  </p>
+  <p>
+    Example proxy address: <code>http://false.i2p</code>
+  </p>
+  <p>
+    For general browsing, stay within the I2P network for full anonymity.
+  </p>
 
-<p>Next you're going to want to setup your webrowser to connect to you're i2pd router. I recomend using librewolf due to it's security fetures but any browser will suffice.</p>
-
-<p>
-you're going to want to proxy you're connection through the i2p router it will look something like this.
-</p>
-
-<center>
-<img src="./IMG/I2P_ProxyConf.png" width="450" height="300">
-</center>
-
-<p>
-After that you're all set!!
-</p>
-
-<p>here are some websites that will help you get started on you're i2p journey</p>
-
-<ul>
-	<li><a href="http://identiguy.i2p">identiguy.i2p</a></li>
-	<li><a href="http://notbob.i2p">notbob.i2p</a></li>
-	<li><a href="http://reg.i2p">reg.i2p</a></li>
-</ul>
-
-<h1 id="Torrents">Torrents</h1>
-
-<h1 id="IRC">IRC</h1>
-
-<h1 id="OutBoundProxy">Proxy</h1>
-    </div>
+</div>
 </body>
 </html>
-
