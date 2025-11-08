@@ -31,6 +31,18 @@ footer {
     padding: 10px 0;
 }
 
+iframe.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90px;       /* same height you used in HTML */
+    border: none;
+    margin: 0;
+    padding: 0;
+    z-index: 1000;      /* make sure it sits above everything else */
+}
+
 .container {
         width: 90%;
         max-width: 600px;
